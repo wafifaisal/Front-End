@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Calculator</title>
+    <style>
+        body{
+            color:black;
+            text-align: center;
+            align-content: center;
+            
+        }
+        #content{
+            max-width: 300px;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(4,1fr);
+            /* justify-items: center; */
+            gap:7px;
+            background-color: black;
+            margin: 0 auto;
+            margin-top: 100px;
+            padding: 20px;
+            border-radius: 10px;
+
+            
+        }
+        
+        .buttonclear{
+            background:red;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            font: bolder;
+            font-size: large;
+        }
+        .operator{
+            background: blue;
+            color:white;
+            padding: 20px;
+            border-radius: 5px;
+            font: bolder;
+            font-size: large;
+        }
+        .button{
+            background:white;
+            padding: 20px;
+            border-radius: 5px;
+            font: bolder;
+            font-size: large;
+        }
+        .buttonsama{
+            background:green;
+            padding: 20px;
+            border-radius: 5px;
+            grid-column: 4/5;
+            grid-row: 4/7;
+            color: white;
+            align-content: center;
+            font: bolder;
+            font-size: large;
+        }
+        .display{
+            background:green;
+            color: white;
+            border-radius: 5px;
+            grid-column: 1/5;
+            font: bolder;
+            font-size: 2em;
+            text-align: end;
+        }
+        button:hover{
+            cursor: pointer;
+            opacity: 50%;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <input class="display" id="display" disabled></input>
+        <button class="buttonclear" id="clear">C</button>
+        <button class="buttonsama" id="equal">=</button>
+        <button class="btn operator">/</button>
+        <button class="btn operator">*</button>
+        <button class="btn operator">-</button>
+        <button class="btn button">7</button>
+        <button class="btn button">8</button>
+        <button class="btn button">9</button>
+        <button class="btn operator">+</button>
+        <button class="btn button">4</button>
+        <button class="btn button">5</button>
+        <button class="btn button">6</button>
+        <button class="btn button">1</button>
+        <button class="btn button">2</button>
+        <button class="btn button">3</button>
+        <button class="btn button">0</button>
+        <button class="btn button">.</button>
+    </div>
+<script src="kalkulator.js"></script>
+</body>
+</html>

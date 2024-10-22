@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Animation</title>
+    <style>
+        .box{
+            width: 400px;
+            height: 400px;
+            /* margin: 50px; */
+            background-color: purple;
+            animation-name: example;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            position: relative;
+            /* transform: translate(100px, 100px); */
+            /* transform: rotate(45deg); */
+            /* transform: perspective(700px) translateX(100px); */
+
+        }
+        @keyframes example{
+            from{
+                background-color: purple;
+            }to{
+                background-color: yellow;
+            }
+            0%{background-color: purple; left:0px; top:0px;transform: rotate(0deg);}
+            25%{background-color: yellow; left:200px; top:0px;transform: rotate(90deg);}
+            50%{background-color: blue; left:200px; top:200px;transform: rotate(180deg);border-radius: 50%;}
+            75%{background-color: green; left:0px; top:200px;transform: rotate(270deg);}
+            100%{background-color: purple; left:0px; top:0px;transform: rotate(360deg);}
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    
+</body>
+</html>
