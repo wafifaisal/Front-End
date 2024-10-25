@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Form</title>
+</head>
+<body>
+<!--Buat Action-->
+    <form action=""> 
+        <input type="text"/>
+        <input type="password" required/>
+        <input type="checkbox"/>
+        <input type="radio"/>
+        <input type="number" min ="1" max="10">
+        <input type="submit" value="OK"/>
+        <textarea rows="3" cols="64"></textarea>
+    </form>
+    <button type="button" onclick="doSomething()">Submit</button>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+<!--Buat pilihan-->
+<p>Apa warna favoritmu</p>
+<select>
+    <option>Merah</option>
+    <option>Biru</option>
+    <option selected>Kuning</option> <!--Pertama kali menjadi Kuning-->
+</select>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<!--Buat Alert ketika klik submit-->
+    <script>
+        function doSomething(){
+            alert("anda telah mengklik sebuah button")
+        }
+    </script>
+
+<!--Buat Action Lebih Rapih-->
+<fieldset>
+    <legend>Data Diri</legend>
+    <p>
+        <label for="nama">Nama:</label>
+        <input type="text" name="nama"/>
+    </p>
+    <p>
+        <label for="usia">Usia:</label>
+        <input type="number" name="usia" min="0">
+    </p>
+</fieldset>
+
+<p>
+    <a href="satu.html">Go to satu</a>
+</p>
+
+
+</body>
+</html>
