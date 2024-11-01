@@ -1,0 +1,23 @@
+{
+    "users": [
+      {
+        "id": "03f6",
+        "username": "Wafi",
+        "email": "wafifaisal19@gmail.com",
+        "password": "Dahsyan80"
+      },
+      {
+        "id": "406a",
+        "username": "giga",
+        "email": "giga.niga@gmail.com",
+        "password": "giga"
+      },
+      {
+        "id": "afdf",
+        "username": "tes1",
+        "email": "tes2@gmail.com",
+        "password": "12345"
+      }
+    ],
+    "tweets":[]
+  }
