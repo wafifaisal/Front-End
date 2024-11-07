@@ -1,6 +1,7 @@
 import Hero from "@/components/hero";
 import Wrapper from "@/components/wrapper";
 import { getBlogs } from "@/libs/blog";
+import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
@@ -13,9 +14,11 @@ export default async function Home() {
           return (
             <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl max-w-xs group">
               <div className="relative w-full h-64">
-                <img
+                <Image
                   src={item.fields.thumbnail.fields.file.url}
                   alt={item.fields.title}
+                  width={500}
+                  height={500}
                   className="w-full h-full object-cover rounded-t-lg"
                 />
                 {/* Title Container */}
@@ -34,9 +37,11 @@ export default async function Home() {
               </div>
               <div className="p-4 text-center">
                 <div className="flex gap-4">
-                  <img
+                  <Image
                     src={item.fields.author.fields.avatar.fields.file.url}
                     alt="avatar"
+                    width={500}
+                    height={500}
                     className="w-10 h-10 object-cover rounded-full"
                   />
                   <div className="flex flex-col text-gray-700 font-semibold text-start">

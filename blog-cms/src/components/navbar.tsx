@@ -1,13 +1,16 @@
 import Link from "next/link";
 import Wrapper from "./wrapper";
+import Image from "next/image";
 
 export default function Navbar() {
   return (
     <div className="h-[60px] top-0">
       <Wrapper>
         <Link href={"/"} className="flex items-center gap-2 ">
-          <img
+          <Image
             src="https://img.icons8.com/?size=100&id=oTpJLaIvlhgO&format=png&color=000000"
+            width={500}
+            height={500}
             alt="Logo Blogger"
             className="h-8"
           />

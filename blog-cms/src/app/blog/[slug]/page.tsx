@@ -57,7 +57,7 @@ export default async function BlogDetail({
       <div className="flex max-w-3xl mx-auto mt-8 px-4 sm:px-8">
         {/* Social Share Buttons */}
         <div className="fixed -ml-20 top-1/2 flex flex-col items-center gap-4 mr-8 z-50">
-          <a
+          <Link
             href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodedSlug}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -65,8 +65,8 @@ export default async function BlogDetail({
             className="text-blue-600 hover:text-blue-800"
           >
             <FaLinkedin size={24} />
-          </a>
-          <a
+          </Link>
+          <Link
             href={`https://twitter.com/intent/tweet?url=${encodedSlug}&text=${encodedTitle}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -74,14 +74,14 @@ export default async function BlogDetail({
             className="text-blue-400 hover:text-blue-600"
           >
             <FaTwitter size={24} />
-          </a>
-          <a
+          </Link>
+          <Link
             href={`mailto:?subject=${encodedSlug}&body=Check out this article: ${encodedSlug}`}
             aria-label="Share via Email"
             className="text-gray-600 hover:text-gray-800"
           >
             <FaEnvelope size={24} />
-          </a>
+          </Link>
         </div>
 
         {/* Blog Content */}
