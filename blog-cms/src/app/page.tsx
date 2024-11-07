@@ -1,6 +1,7 @@
 import Hero from "@/components/hero";
 import Wrapper from "@/components/wrapper";
 import { getBlogs } from "@/libs/blog";
+import Link from "next/link";
 
 export default async function Home() {
   const data = await getBlogs();
@@ -45,12 +46,12 @@ export default async function Home() {
                     </div>
                   </div>
                 </div>
-                <a
+                <Link
                   href={`/blog/${item.fields.slug}`}
                   className="text-gray-500 hover:underline"
                 >
                   Read More
-                </a>
+                </Link>
               </div>
             </div>
           );
