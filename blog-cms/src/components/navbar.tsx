@@ -9,8 +9,8 @@ export default function Navbar() {
         <Link href={"/"} className="flex items-center gap-2 ">
           <Image
             src="https://img.icons8.com/?size=100&id=oTpJLaIvlhgO&format=png&color=000000"
-            width={500}
-            height={500}
+            width={50}
+            height={50}
             alt="Logo Blogger"
             className="h-8"
           />
