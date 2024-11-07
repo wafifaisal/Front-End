@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Wrapper from "./wrapper";
 
 export default function Hero({ length }: { length: number }) {
   return (
