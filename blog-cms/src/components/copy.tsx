@@ -5,7 +5,7 @@ import { useCopyToClipboard } from "usehooks-ts";
 import { useState } from "react";
 
 export default function CopyButton({ link }: { link: string }) {
-  const [_value, copy] = useCopyToClipboard();
+  const [, copy] = useCopyToClipboard();
   const [copied, setCopied] = useState<boolean>(false);
   return (
     <div
