@@ -1,3 +1,4 @@
+import ShareButton from "@/components/share";
 import Wrapper from "@/components/wrapper";
 import { getBlogs, getBlogSlug } from "@/libs/blog";
 import { IBlog } from "@/types/blog";
@@ -55,30 +56,13 @@ export default async function BlogDetail({
   return (
     <Wrapper>
       <div className="flex max-w-3xl mx-auto mt-8 px-4 sm:px-8">
-        {/* Social Share Buttons */}
-        <div className="fixed -ml-20 top-1/2 flex flex-col items-center gap-4 mr-8 z-50">
-          <Link
-            href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodedSlug}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Share on LinkedIn"
-            className="text-blue-600 hover:text-blue-800"
-          >
-            <FaLinkedin size={24} />
-          </Link>
-          <Link
-            href={`https://twitter.com/intent/tweet?url=${encodedSlug}&text=${encodedTitle}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Share on Twitter"
-            className="text-blue-400 hover:text-blue-600"
-          >
-            <FaTwitter size={24} />
-          </Link>
+        {/* Social Share Buttons (Desktop) */}
+        <div className="hidden xl:block md:hidden fixed left-0 top-1/2 transform -translate-y-1/2 flex-col items-center gap-4 z-50">
+          <ShareButton slug={blog.fields.slug} />
           <Link
             href={`mailto:?subject=${encodedSlug}&body=Check out this article: ${encodedSlug}`}
             aria-label="Share via Email"
-            className="text-gray-600 hover:text-gray-800"
+            className="flex justify-center text-gray-600 hover:text-gray-800 my-5"
           >
             <FaEnvelope size={24} />
           </Link>
@@ -123,6 +107,22 @@ export default async function BlogDetail({
           </header>
 
           {documentToReactComponents(blog.fields.content, options)}
+
+          <div className="block xl:hidden  mt-8">
+            <div className="flex flex-col items-center gap-4">
+              <span className="text-lg font-semibold text-orange-600">
+                Bagikan Artikel Ini
+              </span>
+              <ShareButton slug={blog.fields.slug} />
+              <Link
+                href={`mailto:?subject=${encodedTitle}&body=Check out this article: ${encodedSlug}`}
+                aria-label="Share via Email"
+                className="text-gray-600 hover:text-gray-800"
+              >
+                <FaEnvelope size={24} />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </Wrapper>
