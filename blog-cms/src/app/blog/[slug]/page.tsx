@@ -10,7 +10,7 @@ import {
 import { BLOCKS } from "@contentful/rich-text-types";
 import Image from "next/image";
 import Link from "next/link";
-import { FaEnvelope, FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
 
 export const generateStaticParams = async () => {
   const blogs: IBlog[] = await getBlogs();
@@ -39,8 +39,6 @@ export default async function BlogDetail({
   params: { slug: string };
 }) {
   const blog: IBlog = await getBlogSlug(params.slug);
-  const encodedSlug = encodeURIComponent(blog.fields.slug);
-  const encodedTitle = encodeURIComponent(blog.fields.title);
   const blogNe: IBlog[] = await getBlogRecom(params.slug);
 
   const options: Options = {

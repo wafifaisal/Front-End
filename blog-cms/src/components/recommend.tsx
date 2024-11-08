@@ -1,7 +1,6 @@
 import { IBlog } from "@/types/blog";
 import Image from "next/image";
 import Link from "next/link";
-import ShareButton from "./share";
 
 export default function RecommendationBlog({ blogs }: { blogs: IBlog[] }) {
   return (
