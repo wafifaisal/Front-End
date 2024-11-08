@@ -1,6 +1,7 @@
+import RecomendationBLog from "@/components/recommend";
 import ShareButton from "@/components/share";
 import Wrapper from "@/components/wrapper";
-import { getBlogs, getBlogSlug } from "@/libs/blog";
+import { getBlogRecom, getBlogs, getBlogSlug } from "@/libs/blog";
 import { IBlog } from "@/types/blog";
 import {
   documentToReactComponents,
@@ -40,6 +41,7 @@ export default async function BlogDetail({
   const blog: IBlog = await getBlogSlug(params.slug);
   const encodedSlug = encodeURIComponent(blog.fields.slug);
   const encodedTitle = encodeURIComponent(blog.fields.title);
+  const blogNe: IBlog[] = await getBlogRecom(params.slug);
 
   const options: Options = {
     renderNode: {
@@ -55,21 +57,17 @@ export default async function BlogDetail({
 
   return (
     <Wrapper>
-      <div className="flex max-w-3xl mx-auto mt-8 px-4 sm:px-8">
-        {/* Social Share Buttons (Desktop) */}
-        <div className="hidden xl:block md:hidden fixed left-0 top-1/2 transform -translate-y-1/2 flex-col items-center gap-4 z-50">
-          <ShareButton slug={blog.fields.slug} />
-          <Link
-            href={`mailto:?subject=${encodedSlug}&body=Check out this article: ${encodedSlug}`}
-            aria-label="Share via Email"
-            className="flex justify-center text-gray-600 hover:text-gray-800 my-5"
-          >
-            <FaEnvelope size={24} />
-          </Link>
+      <div className="flex max-w-5xl mx-auto mt-8 px-4 sm:px-8 relative ">
+        {/* Fixed Sidebar for Desktop */}
+        <div className="hidden md:hidden lg:hidden xl:block flex-col w-64 fixed top-20 right-10 gap-6">
+          <RecomendationBLog blogs={blogNe} />
+          <div className="mt-[400px] ml-5 relative z-50">
+            <ShareButton slug={blog.fields.slug} />
+          </div>
         </div>
 
         {/* Blog Content */}
-        <div className="flex-1 text-black">
+        <div className="flex-1 pr-0 xl:pr-80 text-black">
           <Link
             href="/"
             aria-label="Back to Home"
@@ -108,19 +106,11 @@ export default async function BlogDetail({
 
           {documentToReactComponents(blog.fields.content, options)}
 
-          <div className="block xl:hidden  mt-8">
-            <div className="flex flex-col items-center gap-4">
-              <span className="text-lg font-semibold text-orange-600">
-                Bagikan Artikel Ini
-              </span>
+          {/* Mobile View for Recommendation and Share Button */}
+          <div className="block xl:hidden mt-8">
+            <RecomendationBLog blogs={blogNe} />
+            <div className="mt-6">
               <ShareButton slug={blog.fields.slug} />
-              <Link
-                href={`mailto:?subject=${encodedTitle}&body=Check out this article: ${encodedSlug}`}
-                aria-label="Share via Email"
-                className="text-gray-600 hover:text-gray-800"
-              >
-                <FaEnvelope size={24} />
-              </Link>
             </div>
           </div>
         </div>

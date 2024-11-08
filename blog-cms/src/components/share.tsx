@@ -13,19 +13,17 @@ interface IShare {
 const share: IShare[] = [
   {
     Icon: IoLogoFacebook,
-    link: "https//www/facebook.com/sharer/sharer.php?u=",
+    link: "https://www.facebook.com/sharer/sharer.php?u=",
     style: "text-blue-500 hover:text-blue-700",
   },
-
   {
     Icon: IoLogoLinkedin,
     link: "https://www.linkedin.com/sharing/share-offsite/?url=",
     style: "text-blue-400 hover:text-blue-700",
   },
-
   {
     Icon: IoLogoTwitter,
-    link: "https://www.twitter.com/intent/tweet?url=",
+    link: "https://twitter.com/intent/tweet?url=",
     style: "text-blue-400 hover:text-blue-700",
   },
   {
@@ -37,26 +35,23 @@ const share: IShare[] = [
 
 export default function ShareButton({ slug }: { slug: string }) {
   const domain = "https://wafi-blog.vercel.app/blog/";
+  const shareUrl = `${domain}${slug}`;
+
   return (
-    <div>
-      <p className="my-4 text-start font-bold text-orange-500 hidden lg:hidden xl:block md:hidden px-5 ">
-        BAGIKAN
-      </p>
-      <div>
-        <div className="flex text-[24px] gap-4 px-5">
-          <CopyButton link={`${domain}${slug}`} />
-          {share.map((item, idx) => {
-            return (
-              <Link
-                key={idx}
-                href={`${item.link}${domain}${slug}`}
-                target="_blank"
-              >
-                <item.Icon className={`${item.style}`} />
-              </Link>
-            );
-          })}
-        </div>
+    <div className="flex flex-col items-start gap-2 z-10">
+      <h3 className="text-lg font-bold text-gray-800">Share This Article</h3>
+      <div className="flex text-[24px] gap-4">
+        <CopyButton link={shareUrl} />
+        {share.map((item, idx) => (
+          <Link
+            key={idx}
+            href={`${item.link}${shareUrl}`}
+            target="_blank"
+            aria-label={`Share on ${item.Icon.name}`}
+          >
+            <item.Icon className={`${item.style}`} />
+          </Link>
+        ))}
       </div>
     </div>
   );
