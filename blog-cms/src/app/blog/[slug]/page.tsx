@@ -9,7 +9,7 @@ import {
 import { BLOCKS } from "@contentful/rich-text-types";
 import Image from "next/image";
 import Link from "next/link";
-import { FaLinkedin, FaTwitter, FaEnvelope, FaArrowLeft } from "react-icons/fa";
+import { FaEnvelope, FaArrowLeft } from "react-icons/fa";
 
 export const generateStaticParams = async () => {
   const blogs: IBlog[] = await getBlogs();
