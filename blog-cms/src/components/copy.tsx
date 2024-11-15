@@ -15,8 +15,14 @@ export default function CopyButton({ link }: { link: string }) {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       }}
+      onMouseLeave={() => setCopied(false)}
+      data-cy="copy-button"
     >
-      {copied ? <FaCheck className="text-green-400" /> : <IoLink />}
+      {copied ? (
+        <FaCheck data-cy="check-icon" className="text-green-400" />
+      ) : (
+        <IoLink data-cy="link-icon" />
+      )}
       {copied && (
         <span className="absolute left-0 -translate-x-1/2 mt-2 px-2 py-1 text-sm bg-black text-white rounded shadow-lg">
           Link copied!

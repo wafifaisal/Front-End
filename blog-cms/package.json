@@ -6,11 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run-comp": "cypress run --component",
+    "prepare": "husky"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^16.0.0",
     "@contentful/rich-text-types": "^17.0.0",
+    "@supabase/supabase-js": "^2.46.1",
     "@tailwindcss/line-clamp": "^0.4.4",
     "contentful-resolve-response": "^1.9.0",
     "next": "14.2.16",
@@ -24,8 +29,10 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "cypress": "^13.15.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.16",
+    "husky": "^9.1.6",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"

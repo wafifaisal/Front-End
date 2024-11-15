@@ -31,6 +31,7 @@ export default async function Home() {
         {data.map((item: BlogData) => (
           <div
             key={item.fields.slug}
+            data-cy="blog-item"
             className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl max-w-xs group"
           >
             <div className="relative w-full h-64">

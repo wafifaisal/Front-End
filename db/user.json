@@ -17,7 +17,12 @@
       "username": "tes1",
       "email": "tes2@gmail.com",
       "password": "12345"
+    },
+    {
+      "id": "b4b5",
+      "username": "Dodo",
+      "email": "dodo@gmail.com",
+      "password": "Asd1234"
     }
-  ],
-  "tweets":[]
+  ]
 }
