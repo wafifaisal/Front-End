@@ -7,9 +7,9 @@ export default function UserPageClient() {
   const [user, setUser] = useState<IUser[]>([]);
   const getData = async () => {
     try {
-      const res = await fetch("http://localhost:2000/users");
+      const res = await fetch("http://localhost:8000/api/user");
       const data = await res.json();
-      setUser(data);
+      setUser(data.users);
     } catch (err) {
       console.log(err);
     }
@@ -56,7 +56,7 @@ export default function UserPageClient() {
                     {idx + 1}
                   </td>
                   <td className="p-2 text-center border bg-teal-500  border-white text-white hover:bg-teal-800 active:animate-ping hover:cursor-pointer">
-                    {item.username}
+                    {item.name}
                   </td>
                   <td className="p-2 text-center border bg-teal-500  border-white text-white ">
                     {item.email}

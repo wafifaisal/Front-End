@@ -1,7 +1,8 @@
 import { IUser } from "@/types/user";
+import { MdDeleteForever } from "react-icons/md";
 
-async function getData(): Promise<IUser[]> {
-  const res = await fetch("http://localhost:2000/users");
+async function getData(): Promise<{ users: IUser[] }> {
+  const res = await fetch("http://localhost:8000/api/user");
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -39,19 +40,21 @@ export default async function UserPage() {
           </tr>
         </thead>
         <tbody>
-          {data.map((item, idx) => {
+          {data.users.map((item, idx) => {
             return (
               <tr key={item.id} className="hover:bg-teal-800">
                 <td className="p-2 text-center border bg-teal-500  border-white text-white">
                   {idx + 1}
                 </td>
                 <td className="p-2 text-center border bg-teal-500  border-white text-white hover:bg-teal-800 active:animate-ping hover:cursor-pointer">
-                  {item.username}
+                  {item.name}
                 </td>
                 <td className="p-2 text-center border bg-teal-500  border-white text-white ">
                   {item.email}
                 </td>
-                <td className="p-2 text-center border text-red-500 bg-teal-950 text-xl hover:text-red-600"></td>
+                <td className="p-2 text-center border text-red-500 bg-teal-950 text-xl hover:text-red-600">
+                  <MdDeleteForever />
+                </td>
               </tr>
             );
           })}

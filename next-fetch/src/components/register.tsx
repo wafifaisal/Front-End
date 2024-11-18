@@ -1,9 +1,10 @@
 "use client";
+import action from "@/app/action";
 import { Field, Form, Formik, FormikProps } from "formik";
 import * as Yup from "yup";
 
 const registerSchema = Yup.object().shape({
-  username: Yup.string().required("Username is Required"),
+  name: Yup.string().required("name is Required"),
   email: Yup.string()
     .email("Invalid email format")
     .required("Email is required"),
@@ -13,20 +14,22 @@ const registerSchema = Yup.object().shape({
 });
 
 interface IFormValues {
-  username: string;
+  name: string;
   email: string;
   password: string;
 }
 
 export default function FormRegister() {
-  const initialValue: IFormValues = { username: "", email: "", password: "" };
+  const initialValue: IFormValues = { name: "", email: "", password: "" };
   const handleAdd = async (user: IFormValues) => {
     try {
-      await fetch("http://localhost:2000/users", {
+      await fetch("http://localhost:8000/api/user", {
         method: "POST",
         body: JSON.stringify(user),
+        headers: { "content-type": "application/json" },
       });
-      alert(`Account ${user.username} Has Been Added`);
+      action("users");
+      alert(`Account ${user.name} Has Been Added`);
     } catch (err) {
       console.log(err);
     }
@@ -51,22 +54,19 @@ export default function FormRegister() {
             return (
               <Form>
                 <div className="mb-4">
-                  <label
-                    className="text-[#F3F3E0] block mb-1"
-                    htmlFor="username"
-                  >
-                    Username:
+                  <label className="text-[#F3F3E0] block mb-1" htmlFor="name">
+                    name:
                   </label>
                   <Field
-                    className="w-full px-3 py-2 bg-white border border-[#ccc] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
+                    className="w-full px-3 py-2 bg-white border border-[#ccc] text-black rounded-md focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
                     type="text"
-                    name="username"
+                    name="name"
                     onChange={handleChange}
-                    value={values.username}
+                    value={values.name}
                   />
-                  {touched.username && errors.username ? (
+                  {touched.name && errors.name ? (
                     <div className="text-red-500 text-xs mt-1">
-                      {errors.username}
+                      {errors.name}
                     </div>
                   ) : null}
                 </div>
@@ -76,7 +76,7 @@ export default function FormRegister() {
                     Email:
                   </label>
                   <Field
-                    className="w-full px-3 py-2 bg-white border border-[#ccc] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
+                    className="w-full px-3 py-2 bg-white border border-[#ccc] text-black rounded-md focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
                     type="text"
                     name="email"
                     onChange={handleChange}
@@ -97,7 +97,7 @@ export default function FormRegister() {
                     Password:
                   </label>
                   <Field
-                    className="w-full px-3 py-2 bg-white border border-[#ccc] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
+                    className="w-full px-3 py-2 bg-white border border-[#ccc] text-black rounded-md focus:outline-none focus:ring-2 focus:ring-[#3b82f6]"
                     type="password"
                     name="password"
                     onChange={handleChange}

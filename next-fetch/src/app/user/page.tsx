@@ -1,7 +1,9 @@
+import DeleteUser from "@/components/deleteUser";
+import UserPageClient from "@/components/userClient";
 import { IUser } from "@/types/user";
 
-async function getData(): Promise<IUser[]> {
-  const res = await fetch("http://localhost:2000/users");
+async function getData(): Promise<{ users: IUser[] }> {
+  const res = await fetch("http://localhost:8000/api/user");
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -11,7 +13,7 @@ async function getData(): Promise<IUser[]> {
 export default async function UserPage() {
   const data = await getData();
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-between p-[100px]">
       <table className="table-auto mt-10">
         <thead className="p-4 border-[1px] border-[white] border-solid">
           <tr className="gap-5">
@@ -39,24 +41,25 @@ export default async function UserPage() {
           </tr>
         </thead>
         <tbody>
-          {data.map((item, idx) => {
+          {data.users.map((item, idx) => {
             return (
               <tr key={item.id} className="hover:bg-teal-800">
                 <td className="p-2 text-center border bg-teal-500  border-white text-white">
                   {idx + 1}
                 </td>
                 <td className="p-2 text-center border bg-teal-500  border-white text-white hover:bg-teal-800 active:animate-ping hover:cursor-pointer">
-                  {item.username}
+                  {item.name}
                 </td>
                 <td className="p-2 text-center border bg-teal-500  border-white text-white ">
                   {item.email}
                 </td>
-                <td className="p-2 text-center border text-red-500 bg-teal-950 text-xl hover:text-red-600"></td>
+                <DeleteUser id={item.id} />
               </tr>
             );
           })}
         </tbody>
       </table>
+      <UserPageClient />
     </div>
   );
 }
