@@ -81,3 +81,16 @@ body {
 .glow-btn:hover::before {
   opacity: 1;
 }
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%); /* Adjust based on text width */
+  }
+}
+
+.animate-slide-left {
+  animation: slideLeft 1s forwards ease-in-out;
+}

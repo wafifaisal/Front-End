@@ -11,13 +11,13 @@ export default async function Home() {
   return (
     <Wrapper>
       <Hero length={data.length} />
-      <div className="flex flex-wrap justify-center gap-8 p-8">
+      <div className="flex flex-wrap justify-center gap-4 p-4">
         {data.map((item, idx) => {
           return (
             <div
               key={item.slug}
               data-cy="blog-item"
-              className=" bg-gradient-to-r from-blue-950 to-black transform scale-[0.97] rounded-lg shadow-lg overflow-hidden  transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl max-w-xs group"
+              className=" bg-gradient-to-r from-blue-950 to-black transform rounded-lg shadow-lg overflow-hidden  transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl max-w-xs group"
             >
               <div className="relative w-full h-64">
                 <Image
@@ -32,9 +32,6 @@ export default async function Home() {
                     <h2 className="text-xl font-bold transition-opacity duration-300 ease-in-out group-hover:opacity-100 opacity-0">
                       {item.title}
                     </h2>
-                    {/* <div className="text-[10px] text-white opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
-                      Posted at: {new Date(item.createdAt).toLocaleDateString()}
-                    </div> */}
                   </div>
                   <Meteors number={10} className="-z-50" />
                 </div>
