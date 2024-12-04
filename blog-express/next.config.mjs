@@ -21,7 +21,15 @@ const nextConfig = {
             {
                 protocol: "https",
                 hostname:'tse2.mm.bing.net'
-            }
+            },
+            {
+                protocol: "https",
+                hostname:'wallpapercave.com'
+            },
+            {
+                protocol: "https",
+                hostname:'images.alphacoders.com'
+            },
         ],
     },
 };

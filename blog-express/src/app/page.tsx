@@ -46,9 +46,9 @@ export default async function Home() {
                     className="w-10 h-10 object-cover rounded-full"
                   />
 
-                  <div className="flex flex-col text-gray-700 font-semibold text-start">
+                  <div className="flex flex-col text-white font-semibold text-start">
                     {item.user.username}
-                    <div className="text-gray-500 text-sm mb-5">
+                    <div className="text-white text-sm mb-5">
                       {item.user.email}
                     </div>
                   </div>
