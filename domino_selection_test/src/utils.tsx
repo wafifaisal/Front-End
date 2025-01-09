@@ -16,3 +16,22 @@ export const generateGrid = (number: number, isDouble: boolean) => {
     ></div>
   ));
 };
+
+export const removeDuplicates = (domino: number[][]): number[][] => {
+  const uniqueDominoes: Set<string> = new Set();
+  const duplicates: Set<string> = new Set();
+
+  domino.forEach((item) => {
+    const sortedItem = [...item].sort((a, b) => a - b).join(",");
+    if (uniqueDominoes.has(sortedItem)) {
+      duplicates.add(sortedItem);
+    } else {
+      uniqueDominoes.add(sortedItem);
+    }
+  });
+
+  return domino.filter((item) => {
+    const sortedItem = [...item].sort((a, b) => a - b).join(",");
+    return !duplicates.has(sortedItem);
+  });
+};

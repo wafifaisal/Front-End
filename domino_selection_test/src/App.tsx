@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./index.css";
-import { generateGrid } from "./utils";
+import { generateGrid, removeDuplicates } from "./utils";
 import { initialDominoes } from "./constants";
 import {
   FaPlusCircle,
@@ -32,18 +32,6 @@ const App: React.FC = () => {
     });
     setDominoes(sorted);
     setManipulatedData(sorted);
-  };
-
-  const removeDuplicates = () => {
-    const unique = dominoes.filter(
-      ([left, right], index, self) =>
-        index ===
-        self.findIndex(
-          ([l, r]) => (l === left && r === right) || (l === right && r === left)
-        )
-    );
-    setDominoes(unique);
-    setManipulatedData(unique);
   };
 
   const flipCards = () => {
@@ -153,7 +141,7 @@ const App: React.FC = () => {
         </button>
         <button
           className="bg-yellow-700 text-white px-5 py-2 rounded-lg shadow-md hover:bg-yellow-600 transition flex justify-center gap-2"
-          onClick={removeDuplicates}
+          onClick={() => setDominoes(removeDuplicates(dominoes))}
         >
           <FaTrashAlt />
           <span className="">Remove Dup</span>
